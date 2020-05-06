@@ -12,7 +12,7 @@ class App extends React.Component {
 
     this.state = {
       searchResults: [],
-      playlistName: 'My Playlist',
+      playlistName: 'New Playlist',
       playlistTracks: []
     };
 
@@ -25,8 +25,8 @@ class App extends React.Component {
 
   search(term) {
     Spotify.search(term).then(searchResults => {
-      this.setState({searchResults: searchResults})
-    })
+      this.setState({searchResults: searchResults});
+    });
   }
 
   //check if the track already exists in the playlist and if not, add the track (step 41)
@@ -57,8 +57,8 @@ class App extends React.Component {
       this.setState({
         playlistName: 'New Playlist',
         playlistTracks: []
-      })
-    })
+      });
+    });
   }
 
   render() {
@@ -69,7 +69,7 @@ class App extends React.Component {
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} 
-                           onAdd={this.addTrack}/>
+                           onAdd={this.addTrack} />
             <Playlist playlistName={this.state.playlistName} 
                       playlistTracks={this.state.playlistTracks}
                       onRemove={this.removeTrack}
